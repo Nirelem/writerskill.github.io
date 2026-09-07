@@ -21,7 +21,21 @@
 
     <nav class="site-nav">
       <a href="/">Home</a>
-      <a href="/works">Works</a>
+
+      <div class="nav-dropdown">
+        <a href="{{ "/works" | relative_url }}" class="dropdown-toggle">
+          Works
+          <svg class="caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true">
+            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <div class="dropdown-menu">
+          {% for event in site.data.events %}
+            <a class="dropdown-item" href="{{ "/works/" | append: event.slug | append: "/" | relative_url }}">{{ event.name }}</a>
+          {% endfor %}
+        </div>
+      </div>
+
       <a href="/about">About</a>
       <a href="/submissions">Submissions</a>
     </nav>
@@ -35,6 +49,34 @@
 <footer class="site-footer">
   <p>© {{ site.title }}</p>
 </footer>
+
+<script>
+  // On devices without hover (touch), the first tap on "Works" opens the
+  // dropdown instead of navigating straight to the page; a second tap
+  // (or tapping an event in the menu) follows the link as normal.
+  document.addEventListener("DOMContentLoaded", function () {
+    var dropdown = document.querySelector(".nav-dropdown");
+    if (!dropdown) return;
+
+    var toggle = dropdown.querySelector(".dropdown-toggle");
+    var supportsHover = window.matchMedia("(hover: hover)").matches;
+
+    if (!supportsHover) {
+      toggle.addEventListener("click", function (e) {
+        if (!dropdown.classList.contains("open")) {
+          e.preventDefault();
+          dropdown.classList.add("open");
+        }
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!dropdown.contains(e.target)) {
+          dropdown.classList.remove("open");
+        }
+      });
+    }
+  });
+</script>
 
 </body>
 </html>

@@ -3,50 +3,23 @@ layout: default
 title: Works
 ---
 
-<section class="genre-filter">
-  <strong>Filter by genre:</strong>
-
-  <a href="#all">All</a>
-
-  {% assign genres = site.posts | map: "genre" | uniq | sort %}
-  {% for genre in genres %}
-    <a href="#{{ genre | slugify }}">{{ genre }}</a>
-  {% endfor %}
+<section class="events-intro">
+  <h2>Works</h2>
+  <p class="intro-text">
+    Browse submitted works by event. Pick an event below to see everything
+    that was submitted for it.
+  </p>
 </section>
 
-<hr>
-
-<section id="all">
-  {% for post in site.posts %}
-    <article class="work-card">
-      <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+<section class="event-list">
+  {% for event in site.data.events %}
+    {% assign event_posts = site.posts | where: "event", event.slug %}
+    <article class="event-card">
+      <h3><a href="{{ "/works/" | append: event.slug | append: "/" | relative_url }}">{{ event.name }}</a></h3>
       <p class="meta">
-        by {{ post.penname | default: post.author }} •
-        {{ post.genre }} •
-        {{ post.date | date: "%B %d, %Y" }}
+        {{ event_posts.size }} work{% unless event_posts.size == 1 %}s{% endunless %} submitted
       </p>
-      <p>{{ post.excerpt }}</p>
-      <a class="read-more" href="{{ post.url }}">Read →</a>
+      <a class="read-more" href="{{ "/works/" | append: event.slug | append: "/" | relative_url }}">View works →</a>
     </article>
   {% endfor %}
 </section>
-
-{% for genre in genres %}
-  <section id="{{ genre | slugify }}">
-    <h2>{{ genre }}</h2>
-    
-    {% for post in site.posts %}
-      {% if post.genre == genre %}
-        <article class="work-card">
-          <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-          <p class="meta">
-            by {{ post.penname | default: post.author }} •
-            {{ post.date | date: "%B %d, %Y" }}
-          </p>
-          <p>{{ post.excerpt }}</p>
-          <a class="read-more" href="{{ post.url }}">Read →</a>
-        </article>
-      {% endif %}
-    {% endfor %}
-  </section>
-{% endfor %}

@@ -5,6 +5,7 @@ author: Jane Doe
 penname: EmberQuill
 genre: Poetry
 featured: true
+event: spotlight-volume-1
 ---
 
 <h2>{{ page.title }}</h2>

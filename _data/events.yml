@@ -1,0 +1,16 @@
+# List of all writing events, in the order they should appear in the
+# "Works" dropdown menu and on the /works index page.
+#
+# To add a new event:
+#   1. Add an entry here with a "name" and a unique "slug".
+#   2. Create a page at works/<slug>.md (copy an existing one, e.g.
+#      works/spotlight-volume-1.md, and change the front matter).
+#   3. Tag each submitted post with "event: <slug>" in its front matter.
+#
+# That's it — the dropdown menu and the event page will pick it up
+# automatically.
+
+- name: "Spotlight Volume 1"
+  slug: spotlight-volume-1
+- name: "Spotlight Volume 2"
+  slug: spotlight-volume-2

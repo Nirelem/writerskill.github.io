@@ -5,6 +5,7 @@ author: SaBEANa
 penname: HimboLover
 genre: Fiction
 featured: false
+event: spotlight-volume-2
 ---
 
 <h2>{{ page.title }}</h2>

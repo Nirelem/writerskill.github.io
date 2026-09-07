@@ -5,6 +5,7 @@ author: Patrick Star
 penname: starfish
 genre: Fiction
 featured: false
+event: spotlight-volume-1
 ---
 
 <h2>{{ page.title }}</h2>

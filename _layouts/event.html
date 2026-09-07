@@ -1,0 +1,35 @@
+---
+layout: default
+---
+
+{% assign event_slug = page.event %}
+{% assign event_posts = site.posts | where: "event", event_slug %}
+
+<section class="event-header">
+  <p class="back-link"><a href="{{ "/works" | relative_url }}">&larr; All events</a></p>
+  <h2>{{ page.title }}</h2>
+  {% if page.description %}
+    <p class="intro-text">{{ page.description }}</p>
+  {% endif %}
+</section>
+
+<hr>
+
+<section class="event-works">
+  {% if event_posts.size == 0 %}
+    <p>No works have been posted for this event yet.</p>
+  {% else %}
+    {% for post in event_posts %}
+      <article class="work-card">
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        <p class="meta">
+          by {{ post.penname | default: post.author }} •
+          {{ post.genre }} •
+          {{ post.date | date: "%B %d, %Y" }}
+        </p>
+        <p>{{ post.excerpt }}</p>
+        <a class="read-more" href="{{ post.url | relative_url }}">Read →</a>
+      </article>
+    {% endfor %}
+  {% endif %}
+</section>

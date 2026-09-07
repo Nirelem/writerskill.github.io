@@ -40,6 +40,81 @@ body {
   color: #7a2e1d;
 }
 
+/* "Works" dropdown */
+.site-nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.dropdown-toggle .caret {
+  color: #999;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.dropdown-toggle:hover .caret {
+  color: #7a2e1d;
+}
+
+.dropdown-menu {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 1rem;
+  margin-top: 0.6rem;
+  min-width: 200px;
+  background: #fff;
+  border: 1px solid #e2ddd6;
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(43, 43, 43, 0.1);
+  padding: 0.4rem 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
+  z-index: 20;
+}
+
+/* Open on hover (desktop) or focus (keyboard) */
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu,
+.nav-dropdown.open .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-dropdown:hover .dropdown-toggle .caret,
+.nav-dropdown.open .dropdown-toggle .caret {
+  transform: rotate(180deg);
+  color: #7a2e1d;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 0.55rem 1rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.92rem;
+  color: #444;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.dropdown-item:hover {
+  background: #faf7f2;
+  color: #7a2e1d;
+}
+
 /* Main content */
 .content {
   max-width: 720px;
@@ -96,6 +171,57 @@ body {
   text-align: center;
   font-size: 0.85rem;
   color: #777;
+}
+
+/* Events index (/works) */
+.events-intro {
+  margin-bottom: 2rem;
+}
+
+.event-list {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.event-card {
+  padding: 1.25rem 1.5rem;
+  background: #fff;
+  border: 1px solid #e2ddd6;
+  border-left: 4px solid #7a2e1d;
+  border-radius: 4px;
+}
+
+.event-card h3 {
+  margin: 0 0 0.3rem;
+}
+
+.event-card h3 a {
+  color: #2b2b2b;
+  text-decoration: none;
+}
+
+.event-card h3 a:hover {
+  color: #7a2e1d;
+}
+
+/* Individual event page */
+.event-header {
+  margin-bottom: 1.5rem;
+}
+
+.back-link {
+  margin-bottom: 0.5rem;
+}
+
+.back-link a {
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  color: #7a2e1d;
+  text-decoration: none;
+}
+
+.back-link a:hover {
+  text-decoration: underline;
 }
 
 /* Genre filter */
