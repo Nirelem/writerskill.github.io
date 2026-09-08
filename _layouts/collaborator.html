@@ -1,0 +1,33 @@
+---
+layout: default
+---
+
+{% assign author_posts = site.posts | where: "penname", page.penname %}
+
+<section class="collaborator-header">
+  <p class="back-link"><a href="{{ "/collaborators" | relative_url }}">&larr; All collaborators</a></p>
+  <h2>{{ page.penname }}</h2>
+  <p class="bionote">{{ page.bio | default: "<insert bionote here>" }}</p>
+</section>
+
+<hr>
+
+<section class="collaborator-works">
+  <h3>Works by {{ page.penname }}</h3>
+
+  {% if author_posts.size == 0 %}
+    <p>No works posted yet.</p>
+  {% else %}
+    {% for post in author_posts %}
+      <article class="work-card">
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        <p class="meta">
+          {{ post.genre }} •
+          {{ post.date | date: "%B %d, %Y" }}
+        </p>
+        <p>{{ post.excerpt }}</p>
+        <a class="read-more" href="{{ post.url | relative_url }}">Read →</a>
+      </article>
+    {% endfor %}
+  {% endif %}
+</section>

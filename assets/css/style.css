@@ -224,6 +224,44 @@ body {
   text-decoration: underline;
 }
 
+/* Collaborators index */
+.collaborators-intro {
+  margin-bottom: 2rem;
+}
+
+.collaborator-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.collaborator-card {
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  color: #2b2b2b;
+  text-decoration: none;
+  background: #fff;
+  border: 1px solid #e2ddd6;
+  border-left: 4px solid #7a2e1d;
+  border-radius: 4px;
+  padding: 0.65rem 1.1rem;
+}
+
+.collaborator-card:hover {
+  color: #7a2e1d;
+  border-color: #d8cfc3;
+}
+
+/* Individual collaborator page */
+.collaborator-header {
+  margin-bottom: 1.5rem;
+}
+
+.bionote {
+  font-style: italic;
+  color: #555;
+}
+
 /* Genre filter */
 .genre-filter {
   margin-bottom: 2rem;
